@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Liste utilisateur</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/skeleton.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+</head>
+<body>
+<div class="row">
+<div class="column">
+<h4> Liste des utilisateurs </h4>
+<a class="button button-primary" href="/users/add">Ajouter</a>
+</div>
+</div>
+{% if users %}
+    <div class="row">
+      <div class="column">
+        <table class="u-full-width">
+          <thead>
+            <tr>
+              <th>Prénom</th>
+              <th>Nom</th>
+              <th>Email</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+{% for user in users %}
+            <tr>
+              <td>{{ user.getFirstName }}</td>
+              <td>{{ user.LastName }}</td>
+              <td>{{user.getEmail}}</td>
+              <td>
+               <a href="/users/{{user.getId }}/projects" class="button button-primary">Projet(s)</a>
+               <a href="/users/edit/{{user.getId}}" class="button button-primary">Modifier</a>
+              </td>
+            </tr>
+{% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+{% endif %}
+<a class="button button-primary" href="/projects">Projets</a>
+</body>
+</html>
+

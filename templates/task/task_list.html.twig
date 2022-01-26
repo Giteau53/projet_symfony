@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Liste projets</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/skeleton.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+</head>
+<body>
+<div class="row">
+<div class="column">
+<h4> {{project.getName}} Liste des tâches </h4>
+<a class="button button-primary" href="/project/{{ project.getId }}/tasks/add">Ajouter</a>
+</div>
+</div>
+{% if tasks %}
+    <div class="row">
+      <div class="column">
+        <table class="u-full-width">
+          <thead>
+            <tr>
+              <th>Nom de la tâche</th>
+              <th>Description</th>
+              <th>Date de début</th>
+              <th>Date de fin</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+{% for task in tasks %}
+      <tbody>
+          <tr>
+              <td>{{ task.getName }}</td>
+              <td>{{ task.getDescription }}</td>
+              <td>{{ task.getStartDate|date("d/m/Y") }}</td>
+              <td>{{ task.getEndDate|date("d/m/Y") }}</td>
+              <td><a href="/tasks/{{ task.getId }}/users" class="button button-primary">Ajouter un utilisateur</a></td>
+              <td><a href="/project/{{project.getId}}/tasks/{{ task.getId }}/edit" class="button button-primary">Modifier</a></td>
+          </tr>
+      </tbody>
+{% endfor %}
+         </tbody>
+        </table>
+      </div>
+    </div>
+{% endif %}
+<a class="button button-primary" href="/projects">Projects</a>
+
+</body>
+</html>

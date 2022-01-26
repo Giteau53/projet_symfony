@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Ajout projet</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/skeleton.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+</head>
+<body>
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container">
+    <div class="row">
+      <div class="one-half column" style="margin-top: 25%">
+        <h4>Ajouter un projet</h4>
+      </div>
+    </div>
+{% for label, messages in app.flashes('error') %}
+    {% for message in messages %}
+        <div class="flash-{{ label }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+    <!-- The above form looks like this -->
+    <form action="/projects/add/save" method="POST">
+      <div class="row">
+        <div class="six columns">
+          <label for="nom">Nom du projet</label>
+          <input class="u-full-width" type="text"  name="name">
+        </div>
+        <div class="six columns">
+          <label for="description">Description</label>
+          <textarea class="u-full-width" type="text"  name="description"></textarea>
+        </div>
+        <div>
+          <label for="debut">Date de début</label>
+          <input class="u-full-width" type="date"  name="start_date">
+        </div>
+        <div>
+          <label for="fin">Date de fin</label>
+          <input class="u-full-width" type="date"  name="end_date">
+        </div>
+      
+      </div>
+      <a href="/projects" class="button button-primary">Annuler</a>
+      <input class="button-primary" type="submit" value="Enregistrer">
+    </form>
+
+
+
+  </div>
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>
